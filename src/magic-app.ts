@@ -15,8 +15,8 @@ import { hideBin } from 'yargs/helpers';
 
 import chalk from "chalk";
 
-import { Carta, Color, TipoCarta, Rareza } from './carta.js';
-import { ColeccionCartas } from './coleccion_cartas.js';
+import { Carta, Color, TipoCarta, Rareza } from './magic/carta.js';
+import { ColeccionCartas } from './magic/coleccion_cartas.js';
 
 const coleccion = new ColeccionCartas();
 
