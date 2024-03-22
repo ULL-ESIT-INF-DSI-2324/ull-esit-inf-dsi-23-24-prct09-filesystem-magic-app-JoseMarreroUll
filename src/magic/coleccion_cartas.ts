@@ -3,12 +3,19 @@ import fs from 'fs';
 
 import chalk from "chalk";
 
-const multicolorText = chalk.red('M') + chalk.yellow('u') + chalk.blue('l') + chalk.green('t') + chalk.magenta('i') + 
+export const multicolorText = chalk.red('M') + chalk.yellow('u') + chalk.blue('l') + chalk.green('t') + chalk.magenta('i') + 
                        chalk.cyan('c') + chalk.whiteBright('o') + chalk.redBright('l') + chalk.yellowBright('o') + chalk.greenBright('r');
 
+// Clase que representa una colección de cartas.
 export class ColeccionCartas {
 
-
+  /**
+   * Agrega una carta a la colección de un usuario.
+   * @param user El nombre del usuario.
+   * @param carta La carta a agregar.
+   * @returns Un mensaje indicando que se ha agregado una nueva carta a la colección.
+   * @throws Error si la carta ya existe en la colección del usuario.
+   */
   addCarta(user: string, carta: Carta): string {
     const userFolder = `./data/${user}`;
     if (!fs.existsSync(userFolder)) {
@@ -22,6 +29,12 @@ export class ColeccionCartas {
   }
 
 
+  /**
+   * Lista todas las cartas de la colección de un usuario.
+   * @param user El nombre del usuario.
+   * @returns Una cadena que representa todas las cartas en la colección del usuario.
+   * @throws Error si el usuario no existe o no ha agregado ninguna carta.
+   */
   listCartas(user: string): string {
     const userFolder = `./data/${user}`;
     if (!fs.existsSync(userFolder)) {
@@ -71,12 +84,20 @@ export class ColeccionCartas {
         list += `Loyalty: ${carta._lealtad}\n` +
                 `Market Price: ${carta._valor}\n` +
                 `--------------------------------\n`;
+      } else {
+        list += `--------------------------------\n`;
       }
     });
     return list;
   }
 
-
+  /**
+   * Lee una carta de la colección de un usuario por su ID.
+   * @param user El nombre del usuario.
+   * @param id El ID de la carta.
+   * @returns Una cadena que representa la carta solicitada.
+   * @throws Error si el usuario no existe, la carta no existe o no se puede leer.
+   */
   readCarta(user: string, id: number): string {
     const userFolder = `./data/${user}`;
     if (!fs.existsSync(userFolder)) {
@@ -128,7 +149,13 @@ export class ColeccionCartas {
     return cartaString;
   }
 
-
+  /**
+   * Modifica una carta existente en la colección del usuario.
+   * @param user Nombre del usuario.
+   * @param carta Objeto Carta modificado.
+   * @returns Mensaje de confirmación.
+   * @throws Error si el usuario no tiene cartas en su colección o si la carta especificada no existe.
+   */
   modifyCarta(user: string, carta: Carta): string {
     const userFolder = `./data/${user}`;
     if (!fs.existsSync(userFolder)) {
@@ -141,7 +168,13 @@ export class ColeccionCartas {
     return `Card with id ${carta._id} updated at ${user} collection!`;
   }
 
-
+   /**
+   * Elimina una carta de la colección del usuario.
+   * @param user Nombre del usuario.
+   * @param id ID de la carta a eliminar.
+   * @returns Mensaje de confirmación.
+   * @throws Error si el usuario no tiene cartas en su colección o si la carta especificada no existe.
+   */
   removeCarta(user: string, id: number): string {
     const userFolder = `./data/${user}`;
     if (!fs.existsSync(userFolder)) {

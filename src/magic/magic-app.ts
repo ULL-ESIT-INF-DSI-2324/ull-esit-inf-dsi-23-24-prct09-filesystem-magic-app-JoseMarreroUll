@@ -1,3 +1,15 @@
+/**
+ * Aplicación de magia de cartas.
+ * 
+ * Esta aplicación permite realizar operaciones relacionadas con una colección de cartas.
+ * Las operaciones disponibles son: agregar una carta a la colección, listar las cartas de un usuario,
+ * leer los detalles de una carta de un usuario, actualizar los detalles de una carta de un usuario
+ * y eliminar una carta de la colección de un usuario.
+ * 
+ * La aplicación utiliza la biblioteca yargs para manejar los comandos de línea de comandos.
+ * 
+ */
+
 import yargs from 'yargs/yargs';
 import { hideBin } from 'yargs/helpers';
 
@@ -8,69 +20,72 @@ import { ColeccionCartas } from './coleccion_cartas.js';
 
 const coleccion = new ColeccionCartas();
 
+/**
+ * Comando "add" para agregar una carta a la colección.
+ */
 yargs(hideBin(process.argv))
   .command({
     command: 'add',
-    describe: 'Adds a card to the collection',
+    describe: 'Añade una carta a la colección',
     builder: (yargs) => {
       return yargs.options({
         user: {
-          description: 'Username',
+          description: 'Nombre de usuario',
           type: 'string',
           demandOption: true
         },
         id: {
-          description: 'Card ID',
+          description: 'ID de la carta',
           type: 'number',
           demandOption: true
         },
         name: {
-          description: 'Card Name',
+          description: 'Nombre de la carta',
           type: 'string',
           demandOption: true
         },
         cost: {
-          description: 'Card Cost',
+          description: 'Costo de la carta',
           type: 'number',
           demandOption: true
         },
         color : {
-          description: 'Card Color',
+          description: 'Color de la carta',
           type: 'string',
           demandOption: true
         },
         type: {
-          description: 'Card Type',
+          description: 'Tipo de la carta',
           type: 'string',
           demandOption: true
         },
         rarity: {
-          description: 'Card Rarity',
+          description: 'Rareza de la carta',
           type: 'string',
           demandOption: true
         },
         rules: {
-          description: 'Card Rules',
+          description: 'Reglas de la carta',
           type: 'string',
           demandOption: true
         },
         strength: {
-          description: 'Card Strength',
+          description: 'Fuerza de la carta',
           type: 'number',
           demandOption: false,
         },
         resistance: {
-          description: 'Card Resistance',
+          description: 'Resistencia de la carta',
           type: 'number',
           demandOption: false
         },
         loyalty: {
-          description: 'Card Loyalty Markers',
+          description: 'Marcadores de lealtad de la carta',
           type: 'string',
           demandOption: false
         },
         price: {
-          description: 'Card Market Price',
+          description: 'Precio de mercado de la carta',
           type: 'number',
           demandOption: true
         }
@@ -118,15 +133,17 @@ yargs(hideBin(process.argv))
   .help()
   .argv;
 
-
+/**
+ * Comando "list" para listar las cartas de un usuario.
+ */
 yargs(hideBin(process.argv))
   .command({
     command: 'list',
-    describe: 'Lits user collection',
+    describe: 'Lista la colección de un usuario',
     builder: (yargs) => {
       return yargs.options({
         user: {
-          description: 'Username',
+          description: 'Nombre de usuario',
           type: 'string',
           demandOption: true
         }
@@ -143,20 +160,22 @@ yargs(hideBin(process.argv))
   .help()
   .argv;
 
-
+/**
+ * Comando "read" para leer los detalles de una carta de un usuario.
+ */
 yargs(hideBin(process.argv))
   .command({
     command: 'read',
-    describe: 'Read a card of user collection',
+    describe: 'Lee los detalles de una carta de un usuario',
     builder: (yargs) => {
       return yargs.options({
         user: {
-          description: 'Username',
+          description: 'Nombre de usuario',
           type: 'string',
           demandOption: true
         },
         id: {
-          description: 'Card ID',
+          description: 'ID de la carta',
           type: 'number',
           demandOption: true
         }
@@ -173,70 +192,72 @@ yargs(hideBin(process.argv))
   .help()
   .argv;
 
-
+/**
+ * Comando "update" para actualizar los detalles de una carta de un usuario.
+ */
 yargs(hideBin(process.argv))
   .command({
     command: 'update',
-    describe: 'Update a card of user collection',
+    describe: 'Actualiza los detalles de una carta de un usuario',
     builder: (yargs) => {
       return yargs.options({
         user: {
-          description: 'Username',
+          description: 'Nombre de usuario',
           type: 'string',
           demandOption: true
         },
         id: {
-          description: 'Card ID',
+          description: 'ID de la carta',
           type: 'number',
           demandOption: true
         },
         name: {
-          description: 'Card Name',
+          description: 'Nombre de la carta',
           type: 'string',
           demandOption: true
         },
         cost: {
-          description: 'Card Cost',
+          description: 'Costo de la carta',
           type: 'number',
           demandOption: true
         },
         color : {
-          description: 'Card Color',
+          description: 'Color de la carta',
           type: 'string',
           demandOption: true
         },
         type: {
-          description: 'Card Type',
+          description: 'Tipo de la carta',
           type: 'string',
           demandOption: true
         },
         rarity: {
-          description: 'Card Rarity',
+          description: 'Rareza de la carta',
           type: 'string',
           demandOption: true
         },
         rules: {
-          description: 'Card Rules',
+          description: 'Reglas de la carta',
           type: 'string',
           demandOption: true
         },
         strength: {
-          description: 'Card Strength',
+          description: 'Fuerza de la carta',
           type: 'number',
           demandOption: false,
         },
         resistance: {
-          description: 'Card Resistance',
+          description: 'Resistencia de la carta',
           type: 'number',
           demandOption: false
         },
         loyalty: {
-          description: 'Card Loyalty Markers',
+          description: 'Marcadores de lealtad de la carta',
           type: 'string',
           demandOption: false
         },
         price: {
-          description: 'Card Market Price',
+          description: 'Precio de mercado de la carta',
           type: 'number',
           demandOption: true
         }
@@ -284,20 +305,22 @@ yargs(hideBin(process.argv))
   .help()
   .argv;
 
-
+/**
+ * Comando "remove" para eliminar una carta de la colección de un usuario.
+ */
 yargs(hideBin(process.argv))
   .command({
     command: 'remove',
-    describe: 'Remove a card of user collection',
+    describe: 'Elimina una carta de la colección de un usuario',
     builder: (yargs) => {
       return yargs.options({
         user: {
-          description: 'Username',
+          description: 'Nombre de usuario',
           type: 'string',
           demandOption: true
         },
         id: {
-          description: 'Card ID',
+          description: 'ID de la carta',
           type: 'number',
           demandOption: true
         }

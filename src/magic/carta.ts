@@ -28,6 +28,9 @@ export enum Rareza {
   Mítica
 }
 
+/**
+ * Clase que representa una carta del juego.
+ */
 export class Carta {
   _id: number;
   _nombre: string;
@@ -41,6 +44,20 @@ export class Carta {
   _lealtad?: number; // Solo para cartas de tipo Planeswalker
   _valor: number;
 
+  /**
+   * Constructor de la clase Carta.
+   * @param id El ID de la carta.
+   * @param nombre El nombre de la carta.
+   * @param coste_mana El coste de mana de la carta.
+   * @param color El color de la carta (ver enum Color).
+   * @param tipo El tipo de la carta (ver enum TipoCarta).
+   * @param rareza La rareza de la carta (ver enum Rareza).
+   * @param reglas Las reglas asociadas a la carta.
+   * @param valor El valor de la carta.
+   * @param fuerza (Opcional) La fuerza de la carta (solo para cartas de tipo Criatura).
+   * @param resistencia (Opcional) La resistencia de la carta (solo para cartas de tipo Criatura).
+   * @param lealtad (Opcional) La lealtad de la carta (solo para cartas de tipo Planeswalker).
+   */
   constructor(id: number, nombre: string, coste_mana: number, color: Color , tipo: TipoCarta, rareza: Rareza, reglas: string, valor: number, fuerza?: number, resistencia?: number, lealtad?: number) {
     this._id = id;
     this._nombre = nombre;
